@@ -1,4 +1,4 @@
-# rails_app_template
+# Amanda's Rails Application Template
 The script `gen_rails_app` will create a new Rails project and corresponding gemset, install and configure various gems, and copy in some files (e.g. shared templates for things like error and flash messages, corresponding Sass files, RSpec matchers and helper methods, and more). It can be used like this:
 
 ```shell
