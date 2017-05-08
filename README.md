@@ -8,3 +8,16 @@ The script `gen_rails_app` will create a new Rails project and corresponding gem
 The script `rm_rails_app` will delete the project's source code, gemset, and databases.
 
 The meat of the work is done in `app_template.rb`, the script files mainly just deal with the gemsets. Any files that are copied into the new project can be found in the `templates` directory.
+
+## Gems
+
+| Dev | Test | All |
+| --- | ---- | --- |
+| spring-commands-rspec | rspec-rails | devise |
+| faker | capybara | decent_exposure |
+| pry | poltergeist | haml-rails |
+|  | factory_girl_rails | font-awesome-rails |
+|  | database_cleaner | bourbon |
+|  | shoulda-matchers | bitters |
+|  | webmock | jquery-ui-rails |
+|  |  | record_tag_helper |
