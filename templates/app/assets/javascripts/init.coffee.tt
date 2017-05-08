@@ -1,0 +1,14 @@
+window.<%= @app_name.capitalize %> ||= {}
+
+<%= @app_name.capitalize %>.init = ->
+  @navDrawer = new <%= @app_name.capitalize %>.NavDrawer('#nav_drawer', 'nav .fa-navicon', -> true)
+  new <%= @app_name.capitalize %>.Dismissable('.flash-message button')
+
+$(document).ready ->
+  <%= @app_name.capitalize %>.init()
+
+$(document).on 'turbolinks:load', ->
+  new <%= @app_name.capitalize %>.Dismissable('.flash-message button')
+
+  if <%= @app_name.capitalize %>.navDrawer.isStale()
+    <%= @app_name.capitalize %>.navDrawer = new <%= @app_name.capitalize %>.NavDrawer('#nav_drawer', 'nav .fa-navicon', -> true)
