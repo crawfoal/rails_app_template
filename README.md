@@ -13,14 +13,14 @@ The meat of the work is done in `app_template.rb`, the script files mainly just 
 
 | Dev | Test | All |
 | --- | ---- | --- |
-| spring-commands-rspec | rspec-rails | devise |
-| faker | capybara | decent_exposure |
-| pry | poltergeist | haml-rails |
-|  | factory_girl_rails | font-awesome-rails |
-|  | database_cleaner | bourbon |
-|  | shoulda-matchers | bitters |
-|  | webmock | jquery-ui-rails |
-|  |  | record_tag_helper |
+| [spring-commands-rspec](https://github.com/jonleighton/spring-commands-rspec) | [rspec-rails](https://github.com/rspec/rspec-rails) | [devise](https://github.com/plataformatec/devise) |
+| [faker](https://github.com/stympy/faker) | [capybara](https://github.com/teamcapybara/capybara) | [decent_exposure](https://github.com/hashrocket/decent_exposure) |
+| [pry](https://github.com/pry/pry) | [poltergeist](https://github.com/teampoltergeist/poltergeist) | [haml-rails](https://github.com/indirect/haml-rails) |
+|  | [factory_girl_rails](https://github.com/thoughtbot/factory_girl_rails) | [font-awesome-rails](https://github.com/bokmann/font-awesome-rails) |
+|  | [database_cleaner](https://github.com/DatabaseCleaner/database_cleaner) | [bourbon](https://github.com/thoughtbot/bourbon) |
+|  | [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers) | [bitters](https://github.com/thoughtbot/bitters) |
+|  | [webmock](https://github.com/bblimke/webmock) | [jquery-ui-rails](https://github.com/jquery-ui-rails/jquery-ui-rails) |
+|  |  | [record_tag_helper](https://github.com/rails/record_tag_helper) |
 
 ## Customizations You'll Find in this Template
 
