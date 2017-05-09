@@ -24,8 +24,6 @@ The meat of the work is done in `app_template.rb`, the script files mainly just 
 
 ## Customizations You'll Find in this Template
 
-(listed in order of relevance / impact)
-
 ### Setting up the Test Environment
 
 - Install RSpec
