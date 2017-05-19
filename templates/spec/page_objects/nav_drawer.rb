@@ -3,10 +3,11 @@ module PageObjects
     def edit_account_settings
       click_on t('shared.appbar.edit_account')
     end
+
     def sign_out
       click_on t('shared.appbar.destroy_session')
     end
-    
+
     def open?
       has_css?('#nav_drawer', visible: true)
     end
