@@ -107,6 +107,13 @@ after_bundle do
   end
   directory 'app/views/shared'
 
+  require 'open-uri'
+  create_file 'vendor/assets/stylesheets/normalize.css',
+    open('https://necolas.github.io/normalize.css/latest/normalize.css').read
+
+  create_file 'vendor/assets/stylesheets/_palette.scss',
+    open('http://danlevan.github.io/google-material-color/dist/palette.scss').read
+
   remove_file 'app/assets/stylesheets/application.css'
   copy_file 'app/assets/stylesheets/application.scss'
 
@@ -121,10 +128,11 @@ after_bundle do
     directory 'pages'
 
     # Move includes from _base.scss to application.scss
-    gsub_file 'base/_base.scss', /^((.*variables.*)|(\/\/.*))$/, ''
+    gsub_file 'base/_base.scss', /^((.*variables.*)|(\/\/.*))$\n/, ''
     gsub_file 'base/_base.scss', '@import "', '@import "base/'
     base_includes = File.read('base/_base.scss')
     gsub_file 'application.scss', /^.*base.*$/, base_includes
+    gsub_file 'application.scss', /(^$\n){2,}/, "\n"
     remove_file 'base/_base.scss'
 
     FileUtils.move 'base/_variables.scss', 'utils/_variables.scss'
@@ -147,15 +155,17 @@ after_bundle do
         }
       }
     SCSS
+
+    insert_into_file 'utils/_variables.scss',
+      "// Font Sizes\n$base-font-size: 1em;\n\n",
+      before: "// Other Sizes"
+    insert_into_file 'utils/_variables.scss',
+      "\n$appbar-background-color: $dark-gray;",
+      after: "$secondary-background-color: tint($base-border-color, 75%);"
+    insert_into_file 'utils/_variables.scss',
+      "\n$appbar-font-color: palette(White);",
+      after: "$action-color: $blue;"
   end
-
-
-  require 'open-uri'
-  create_file 'vendor/assets/stylesheets/normalize.css',
-    open('https://necolas.github.io/normalize.css/latest/normalize.css').read
-
-  create_file 'vendor/assets/stylesheets/_palette.scss',
-    open('http://danlevan.github.io/google-material-color/dist/palette.scss').read
 
   directory 'app/assets/javascripts'
   insert_into_file 'app/assets/javascripts/application.js',
@@ -177,14 +187,6 @@ after_bundle do
 
   directory 'config/locales', force: true
 
-  insert_into_file 'app/assets/stylesheets/utils/_variables.scss',
-    "\n$appbar-background-color: $dark-gray;",
-    after: "$secondary-background-color: tint($base-border-color, 75%);"
-  insert_into_file 'app/assets/stylesheets/utils/_variables.scss',
-    "\n$appbar-font-color: palette(White);",
-    after: "$action-color: $blue;"
-  directory 'app/assets/stylesheets/components'
-
   copy_file 'app/helpers/application_helper.rb', force: true
   copy_file 'spec/helpers/application_helper_spec.rb'
 
@@ -196,7 +198,6 @@ after_bundle do
   copy_file 'app/views/welcome/index.html.haml', force: true
   copy_file 'spec/features/welcome_spec.rb'
 
-  copy_file 'app/assets/stylesheets/_navigation.scss'
   copy_file 'spec/features/navigation_spec.rb'
 
   copy_file 'spec/features/devise/sessions_spec.rb'
