@@ -1,12 +1,3 @@
-@function text-color-for($background-color, $textShade: Text) {
-  @if lightness($background-color) > 75 {
-    @return palette(Black, $textShade);
-  } @else {
-    @return palette(White, $textShade);
-  }
-  @return returnValue;
-}
-
 @mixin elevation($z-index, $include-box-shadow: true, $parent-z-index: 0) {
   @if $include-box-shadow {
     $z-index-diff: $z-index - $parent-z-index;

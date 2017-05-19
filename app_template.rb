@@ -110,7 +110,45 @@ after_bundle do
   remove_file 'app/assets/stylesheets/application.css'
   copy_file 'app/assets/stylesheets/application.scss'
 
-  inside('app/assets/stylesheets') { run 'bitters install' }
+  inside('app/assets/stylesheets') do
+    run 'bitters install'
+
+    # --------------------------------------------------------------------------
+    # Convert to Modified 7-1 Architecture
+    directory 'components'
+    directory 'utils'
+    directory 'layout'
+    directory 'pages'
+
+    # Move includes from _base.scss to application.scss
+    gsub_file 'base/_base.scss', /^((.*variables.*)|(\/\/.*))$/, ''
+    gsub_file 'base/_base.scss', '@import "', '@import "base/'
+    base_includes = File.read('base/_base.scss')
+    gsub_file 'application.scss', /^.*base.*$/, base_includes
+    remove_file 'base/_base.scss'
+
+    FileUtils.move 'base/_variables.scss', 'utils/_variables.scss'
+    # --------------------------------------------------------------------------
+
+    gsub_file 'base/_buttons.scss',
+      /\#\{\$all-buttons\} \{.+\}/m,
+      "\#{$all-buttons} {\n\s\s@include button;\n}"
+
+    insert_into_file 'base/_layout.scss',
+      "\n\s\smargin: 0;\n",
+      after: "body {\n\s\sheight: 100%;"
+    append_to_file 'base/_layout.scss', <<~SCSS
+      main {
+        background-color: $base-background-color;
+        margin: $small-spacing;
+
+        @media (min-width: $medium-screen) {
+          margin: $base-spacing;
+        }
+      }
+    SCSS
+  end
+
 
   require 'open-uri'
   create_file 'vendor/assets/stylesheets/normalize.css',

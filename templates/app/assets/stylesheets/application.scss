@@ -3,7 +3,15 @@
 @import "bourbon";
 @import "font-awesome";
 
-@import "base/base";
-@import "components/components";
+@import "utils/variables";
+@import "utils/functions";
+@import "utils/mixins/micro/*";
+@import "utils/mixins/macro/*";
 
-@import "navigation";
+@import "base/*";
+
+@import "layout/navigation";
+
+@import "components/*";
+
+@import "pages/**/*";
