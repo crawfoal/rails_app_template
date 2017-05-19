@@ -31,7 +31,7 @@ gem install nokogiri -- --use-system-libraries
 gem install rails -v '~> 5.0.0'
 
 echo "Creating the rails app"
-rails new . -T -d=postgresql -m ~/Desktop/Code/application_templates/with_devise/app_template.rb
+rails new . -T -d=postgresql -m ~/Desktop/Code/rails_app_template/app_template.rb
 
 echo "Running the specs"
 bin/rspec
