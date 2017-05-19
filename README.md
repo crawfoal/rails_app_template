@@ -43,9 +43,7 @@ The meat of the work is done in `app_template.rb`, the script files mainly just 
 
 ### Custom Sass Stuff
 
-I use Bitters, which installs some basics into `app/assets/stylesheets/base`. These files define the style for all of the basic HTML elements, and sometimes I customize them.
-
-On top of Bourbon and Bitters, I use Sass mixins to build custom components (see `app/assets/stylesheets/components`). The mixins defined in this folder are reusable little chunks of Sass that I use throughout the project, and across all of my projects. In the files in `app/assets/stylesheets`, these styles are actually applied to specific elements on specific pages.
+I use Bourbon and Bitters, and then build custom components on top of that. Everything is organized using a modified [7-1 Architecture](https://sass-guidelin.es/#the-7-1-pattern). I prefer to use mixins and to avoid adding presentational classes in my HTML. More details can be found in [the wiki](https://github.com/crawfoal/rails_app_template/wiki/HTML-&-Stylesheets).
 
 ### I18n Configuration
 
