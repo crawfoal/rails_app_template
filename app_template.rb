@@ -177,10 +177,10 @@ after_bundle do
 
   directory 'config/locales', force: true
 
-  insert_into_file 'app/assets/stylesheets/base/_variables.scss',
+  insert_into_file 'app/assets/stylesheets/utils/_variables.scss',
     "\n$appbar-background-color: $dark-gray;",
     after: "$secondary-background-color: tint($base-border-color, 75%);"
-  insert_into_file 'app/assets/stylesheets/base/_variables.scss',
+  insert_into_file 'app/assets/stylesheets/utils/_variables.scss',
     "\n$appbar-font-color: palette(White);",
     after: "$action-color: $blue;"
   directory 'app/assets/stylesheets/components'
