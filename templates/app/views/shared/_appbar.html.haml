@@ -13,5 +13,5 @@
           %li= 'Users only link 2'
         %ul#account_tools
           %li= link_to t('.edit_account'), edit_user_registration_path
-          %li= link_to t('.destroy_session'), destroy_user_session_path, method: :delete
-#appbar-spacer
+          %li= button_to t('.destroy_session'), destroy_user_session_path, method: :delete
+#appbar_spacer

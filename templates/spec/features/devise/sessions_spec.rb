@@ -11,7 +11,8 @@ RSpec.describe "User Sessions", type: :feature do
     expect(page).to show :welcome_page
   end
 
-  scenario "User signs out from welcome page" do
+  # js enabled b/c error only shows in this case
+  scenario "User signs out from welcome page", :js do
     create_and_login_user
 
     visit welcome_index_path
