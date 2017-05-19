@@ -30,6 +30,10 @@ module PageObjects
     def on_page?(options = {})
       has_css?(selector, options)
     end
+
+    def this
+      find(selector)
+    end
   end
 
   class NotFound < StandardError
