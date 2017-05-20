@@ -2,7 +2,7 @@
 # dismiss button. Later we could add a parameter to remove this assumption, but
 # we'd need to be careful that each button only hides it's own corresponding
 # element.
-class <%= @app_name.capitalize %>.Dismissable
+class <%= @app_name.camelize %>.Dismissable
   constructor: (@dismisserSelector) ->
     @dismisser = $(@dismisserSelector)
     @toBeDismissed = @dismisser.parent()

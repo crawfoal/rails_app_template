@@ -1,4 +1,4 @@
-class <%= @app_name.capitalize %>.NavDrawer
+class <%= @app_name.camelize %>.NavDrawer
   constructor: (@drawerSelector, @drawerTogglerSelector, @shouldCollapse) ->
     @drawer = $(@drawerSelector)
     # once we can use :backdrop, we should automatically include the pseudo
