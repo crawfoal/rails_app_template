@@ -1,0 +1,4 @@
+
+You don't have PhantomJS installed, and it is a requirement for Poltergeist (the
+JavaScript driver we've told Capybara to use). Please see
+http://phantomjs.org/quick-start.html for installation instructions.

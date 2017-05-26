@@ -4,6 +4,11 @@ def source_paths
   [File.join(__dir__, 'templates')] + Array(super)
 end
 
+# path relative to snippets folder
+def snippet(path)
+  File.read(File.join(__dir__, "snippets/#{path}"))
+end
+
 gem 'spring-commands-rspec', group: :test
 gem 'faker', group: [:development, :test]
 gem 'pry'
@@ -15,10 +20,7 @@ unless find_executable('phantomjs')
       run 'brew install phantomjs'
       run 'rm mkmf.log'
     else
-      say "\nYou don't have PhantomJS installed, and it is a requirement for"\
-           "Poltergeist (the JavaScript driver we've told Capybara to use). "\
-           "Please see http://phantomjs.org/quick-start.html for installation "\
-           "instructions.\n"
+      say snippet('missing_phantom_js_message.txt')
     end
 end
 gem 'poltergeist', group: :test
@@ -40,27 +42,11 @@ gem 'jquery-ui-rails'
 after_bundle do
   run 'bundle exec spring binstub rspec'
 
-  application <<~RUBY
-    config.generators do |g|
-      \s\sg.stylesheets false
-      \s\sg.javascripts false
-      \s\sg.helper false
-      \s\sg.view_specs false
-      \s\send
+  application snippet('config/generators.rb')
+  application snippet('config/i18n_load_path.rb')
+  application snippet('config/default_console.rb')
 
-    config.i18n.load_path +=
-    \s\sDir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
-
-    \s\sconsole do
-      \s\srequire 'pry'
-      \s\sconfig.console = Pry
-    \s\send
-  RUBY
-
-  environment "# Devise said to do this\n\s\s"\
-    "config.action_mailer.default_url_options = "\
-    "{ host: 'localhost', port: 3000 }\n",
-    env: ['development', 'test']
+  environment snippet('config/mailer_url_optns.rb'), env: ['development', 'test']
   uncomment_lines 'config/environments/development.rb', /missing_translations/
   uncomment_lines 'config/environments/test.rb', /missing_translations/
 
@@ -72,10 +58,7 @@ after_bundle do
     "config.use_transactional_fixtures = true",
     "config.use_transactional_fixtures = false"
 
-  prepend_to_file 'spec/spec_helper.rb', <<~RUBY
-    require 'webmock/rspec'
-    WebMock.disable_net_connect!(:allow_localhost => true)\n
-  RUBY
+  prepend_to_file 'spec/spec_helper.rb', snippet('spec/webmock_config.rb')
 
   directory 'spec/support'
   directory 'spec/page_objects'
@@ -90,20 +73,19 @@ after_bundle do
   rake 'haml:erb2haml'
   inside 'app/views/layouts' do
     insert_into_file 'application.html.haml',
-      "\n\s\s\s\s%meta{charset: \"utf-8\"}/"\
-      "\n\s\s\s\s%meta{:name => \"viewport\", :content => \"width=device-width, initial-scale=1\"}/",
+      snippet('views/app_layout/meta_tags.html.haml').chomp,
       after: '%head'
 
     gsub_file 'application.html.haml',
       /^.*yield.*$/,
-      "\s\s\s\s%main{:class => \"\#{controller_name} \#{action_name}\"}= yield"
+      snippet('views/app_layout/tagged_main_element.html.haml').chomp
 
     insert_into_file 'application.html.haml',
-      "\n\s\s\s\s= render 'shared/appbar'\n\s\s\s\s= render 'shared/flash'",
+      snippet('views/app_layout/nav_and_flash.html.haml').chomp,
       after: '%body'
 
     append_to_file 'application.html.haml',
-      "\s\s\s\s#medium_screen_indicator\n\s\s\s\s#large_screen_indicator\n"
+      snippet('views/app_layout/screen_size_indicators.html.haml')
   end
   directory 'app/views/shared'
 
@@ -140,24 +122,13 @@ after_bundle do
 
     gsub_file 'base/_buttons.scss',
       /\#\{\$all-buttons\} \{.+\}/m,
-      "\#{$all-buttons} {\n\s\s@include button;\n}"
+      snippet('sass/base_buttons.scss').chomp
 
-    insert_into_file 'base/_layout.scss',
-      "\n\s\smargin: 0;\n",
-      after: "body {\n\s\sheight: 100%;"
-    append_to_file 'base/_layout.scss', <<~SCSS
-      main {
-        background-color: $base-background-color;
-        margin: $small-spacing;
-
-        @media (min-width: $medium-screen) {
-          margin: $base-spacing;
-        }
-      }
-    SCSS
+    append_to_file 'base/_layout.scss',
+      snippet('sass/main_element_layout.scss').chomp
 
     insert_into_file 'utils/_variables.scss',
-      "// Font Sizes\n$base-font-size: 1em;\n\n",
+      "// Font Sizes\n$button-font-size: 16px;\n\n",
       before: "// Other Sizes"
     insert_into_file 'utils/_variables.scss',
       "\n$appbar-background-color: $dark-gray;",
