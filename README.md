@@ -10,6 +10,7 @@ The script `rm_rails_app` will delete the project's source code, gemset, and dat
 The meat of the work is done in `app_template.rb`, the script files mainly just deal with the RVM gemset. A few conventions in this file:
 - Any files that are copied into the new project can be found in the `templates` directory.
 - The `snippets` directory contains longer code blocks that are to be inserted into files that Rails and other gems generate.
+- Some stuff is broken out into separate files so that `app_template.rb` doesn't get too long. `method_missing` is implemented to check and see if there is a file in the `tasks` folder with the same name as the method, if so, it runs the code in that file.
 
 ## Gems this Template Installs
 
