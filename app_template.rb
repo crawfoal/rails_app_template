@@ -6,11 +6,11 @@ end
 
 # path relative to snippets folder
 def snippet(path)
-  File.read(File.join(__dir__, "snippets/#{path}"))
+  File.read(File.join(__dir__, 'snippets', *path.split('/')))
 end
 
 def method_missing(method_name, *args, &block)
-  if File.exists? File.join(__dir__, "tasks/#{method_name}.rb")
+  if File.exist? File.join(__dir__, 'tasks', "#{method_name}.rb")
     apply "#{method_name}.rb"
   else
     super
