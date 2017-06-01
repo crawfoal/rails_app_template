@@ -62,7 +62,9 @@ after_bundle do
 
   directory 'spec', force: true
 
+  copy_file '.rubocop.yml'
+
   git :init
   git add: '.'
-  git commit: "-a -m 'Initial commit'"
+  git commit: "-am 'Initial commit'"
 end

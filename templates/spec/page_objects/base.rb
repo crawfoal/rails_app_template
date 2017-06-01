@@ -7,6 +7,8 @@ module PageObjects
     # to the main module. This method is named after the page object's class. It
     # is responsible for either grabbing the existing page object, or creating a
     # new one, as well as ensuring that the object is currently on the page.
+    #
+    # rubocop:disable Metrics/MethodLength
     def self.inherited(subclass)
       po_name = subclass.name.underscore.split('/').last
       int_method_nm = "_#{po_name}_"
@@ -26,6 +28,7 @@ module PageObjects
         end
       end
     end
+    # rubocop:enable Metrics/MethodLength
 
     def on_page?(options = {})
       has_css?(selector, options)

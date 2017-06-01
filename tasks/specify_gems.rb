@@ -15,6 +15,7 @@ gem 'pry'
 gem 'rails-controller-testing', group: :test
 gem 'record_tag_helper'
 gem 'rspec-rails', '~> 3.5', group: [:development, :test]
+gem 'rubocop', '~> 0.49.1', require: false, group: [:development, :test]
 gem 'shoulda-matchers', group: :test
 gem 'spring-commands-rspec', group: :test
 gem 'webmock', group: :test

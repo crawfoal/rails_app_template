@@ -33,5 +33,13 @@ gem install rails -v '~> 5.0.0'
 echo "Creating the rails app"
 rails new . -T -d=postgresql -m ~/Desktop/Code/rails_app_template/app_template.rb
 
+# Run rubocop, but hide output on this first run because it will include a lot
+# of autocorrections (mainly whitespace and stuff). It will also be run after
+# the specs (below), and this time it will display remaining issues.
+rubocop --auto-correct >/dev/null 2>&1
+
+git add "."
+git commit -am "RuboCop autocorrections"
+
 echo "Running the specs"
 bin/rspec

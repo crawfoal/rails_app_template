@@ -1,4 +1,4 @@
 console do
-      require 'pry'
-      config.console = Pry
-    end
+  require 'pry'
+  config.console = Pry
+end

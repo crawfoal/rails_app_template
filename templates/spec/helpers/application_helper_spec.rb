@@ -30,7 +30,9 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     it "doesn't include blank messages" do
       # make sure this spec breaks if "alert" is removed from whitelist
-      allow(helper).to receive(:flash).and_return('alert' => "This is an alert.")
+      allow(helper).to receive(:flash).and_return(
+        'alert' => "This is an alert."
+      )
 
       expect(helper.flash_filtered_for_display).to \
         include('alert' => "This is an alert.")
