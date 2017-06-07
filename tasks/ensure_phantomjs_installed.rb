@@ -1,4 +1,5 @@
 require 'mkmf'
+
 unless find_executable('phantomjs')
     if find_executable('brew')
       run 'brew install phantomjs'
