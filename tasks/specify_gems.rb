@@ -14,9 +14,12 @@ gem 'poltergeist', group: :test; ensure_phantomjs_installed
 gem 'pry'
 gem 'rails-controller-testing', group: :test
 gem 'record_tag_helper'
-gem 'rspec-rails', '~> 3.5', group: [:development, :test]
+gem 'rspec-rails', '~> 3.6', group: [:development, :test]
 gem 'rubocop', '~> 0.49.1', require: false, group: [:development, :test]
 gem 'shoulda-matchers', group: :test
 gem 'simplecov', :require => false, :group => :test
 gem 'spring-commands-rspec', group: :test
 gem 'webmock', group: :test
+
+# TODO - remove the following line once the gem's current version is useable
+gem 'rb-fsevent', '~>0.9.0', '>=0.9.4'
