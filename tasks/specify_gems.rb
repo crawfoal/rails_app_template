@@ -20,6 +20,3 @@ gem 'shoulda-matchers', group: :test
 gem 'simplecov', :require => false, :group => :test
 gem 'spring-commands-rspec', group: :test
 gem 'webmock', group: :test
-
-# TODO - remove the following line once the gem's current version is useable
-gem 'rb-fsevent', '~>0.9.0', '>=0.9.4'
