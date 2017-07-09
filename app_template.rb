@@ -63,6 +63,7 @@ after_bundle do
   directory 'spec', force: true
 
   copy_file '.rubocop.yml'
+  copy_file 'CONTRIBUTING.md'
 
   git :init
   git add: '.'
