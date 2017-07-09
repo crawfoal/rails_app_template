@@ -1,5 +1,5 @@
 module PageObjects
-  class SignInForm < Base
+  class LogInForm < Base
     def fill_and_submit_for(user)
       self.email = user.email
       self.password = user.password
@@ -7,19 +7,19 @@ module PageObjects
     end
 
     def email=(email)
-      fill_in 'Email', with: email
+      this.fill_in 'Email', with: email
     end
 
     def password=(password)
-      fill_in 'Password', with: password
+      this.fill_in 'Password', with: password
     end
 
     def submit
-      click_on 'Log in'
+      this.click_on 'Log in'
     end
 
     def selector
-      '.sessions.new form#new_user'
+      '#new_user_session'
     end
   end
 end

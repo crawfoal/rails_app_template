@@ -1,17 +1,17 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.feature "User Registrations:", type: :feature do
-  scenario "Visitor signs up from sign up page" do
+RSpec.feature 'User Registrations:', type: :feature do
+  scenario 'Visitor signs up' do
     new_user_info = build_stubbed :user
 
-    visit new_user_registration_path
-    registration_form.fill_and_submit_with new_user_info
+    visit root_path
+    sign_up_form.fill_and_submit_with new_user_info
 
     expect(page).to flash_message t('devise.registrations.signed_up')
     expect(User).to exist email: new_user_info.email
   end
 
-  scenario "User changes password", :js do
+  scenario 'User changes password', :js do
     user = create :user, password: 'old_password'
     stubbed_login_as user
 
@@ -23,7 +23,7 @@ RSpec.feature "User Registrations:", type: :feature do
     expect(page).to flash_message t('devise.registrations.updated')
   end
 
-  scenario "User deletes their account", :js do
+  scenario 'User deletes their account', :js do
     user = create :user
     stubbed_login_as user
 
@@ -37,7 +37,7 @@ RSpec.feature "User Registrations:", type: :feature do
 
   def delete_account
     accept_confirm do
-      click_on "Cancel my account"
+      click_on 'Cancel my account'
     end
   end
 end

@@ -34,6 +34,12 @@ after_bundle do
 
   generate 'devise:install'
   generate 'devise', 'user'
+  insert_into_file 'config/locales/devise.en.yml',
+    snippet('config/locales/devise/en/registration_form.yml').chomp,
+    after: 'registrations:'
+  insert_into_file 'config/locales/devise.en.yml',
+    snippet('config/locales/devise/en/session_form.yml').chomp,
+    after: 'sessions:'
 
   rake 'haml:erb2haml'
   customize_app_layout

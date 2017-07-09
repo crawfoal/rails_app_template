@@ -1,1 +1,8 @@
-%h1= t('.greeting')
+%article#site_description
+  %h1= t('.greeting')
+  %p
+    Put brief site description here.
+
+%article#site_entry
+  = render 'devise/registrations/form'
+  = render 'devise/sessions/form'

@@ -1,7 +1,7 @@
 .flash-message {
   @include clearfix;
 
-  padding: $small-spacing / 2;
+  padding: $tiny-spacing;
 
   button {
     @include compact-button;

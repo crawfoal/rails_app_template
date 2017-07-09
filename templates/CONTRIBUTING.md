@@ -1,4 +1,4 @@
-# Contributing to Autocato
+# Contributing
 
 Here are some steps to open a pull request:
 

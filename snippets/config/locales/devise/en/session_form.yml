@@ -1,0 +1,6 @@
+
+      form:
+        header: "Log in"
+        submit: "Log in"
+        email: "Email"
+        password: "Password"

@@ -47,7 +47,7 @@
 }
 
 @mixin compact-button {
-  padding: ($small-spacing / 4) ($small-spacing / 2);
+  padding: ($tiny-spacing / 2) ($tiny-spacing);
 }
 
 @mixin button {
@@ -103,7 +103,7 @@ Expects the following:
 
   label {
     opacity: .5;
-    padding: $small-spacing / 2 $small-spacing;
+    padding: $tiny-spacing $small-spacing;
 
     &:hover,
     &:focus {
@@ -135,7 +135,7 @@ Expects the following:
 
   label {
     opacity: .5;
-    padding: $small-spacing / 2 $small-spacing;
+    padding: $tiny-spacing $small-spacing;
 
     &:hover,
     &:focus {
