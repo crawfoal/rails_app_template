@@ -8,4 +8,4 @@ class <%= @app_name.camelize %>.Dismissable
     @toBeDismissed = @dismisser.parent()
 
     @dismisser.on 'click', =>
-      @toBeDismissed.slideUp()
+      @toBeDismissed.slideUp().hide()
