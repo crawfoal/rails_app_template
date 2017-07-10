@@ -3,4 +3,5 @@ config.generators do |g|
   g.javascripts false
   g.helper false
   g.view_specs false
+  g.jbuilder false
 end
