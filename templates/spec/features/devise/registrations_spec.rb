@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'User Registrations:', type: :feature do
-  scenario 'Visitor signs up' do
+  scenario 'Visitor signs up', :js do
     new_user_info = build_stubbed :user
 
     visit root_path
@@ -9,6 +9,8 @@ RSpec.feature 'User Registrations:', type: :feature do
 
     expect(page).to flash_message t('devise.registrations.signed_up')
     expect(User).to exist email: new_user_info.email
+    expect(page).to_not show :sign_up_form
+    expect(page).to_not show :log_in_form
   end
 
   scenario 'User changes password', :js do
