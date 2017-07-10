@@ -34,6 +34,12 @@ module PageObjects
       has_css?(selector, options)
     end
 
+    def hidden?
+      !visible?
+    end
+
+    delegate :visible?, to: :this
+
     def this
       find(selector)
     end

@@ -1,11 +1,10 @@
 RSpec::Matchers.define :show do |page_object_name|
   match do |page|
-    page_object.on_page?
+    page_object.on_page? && page_object.visible?
   end
 
   match_when_negated do |page|
-    # on the page and hidden OR not on the page
-    page_object.on_page?(visible: false) || !page_object.on_page?
+    !page_object.on_page? || page_object.hidden?
   end
 
   define_method :page_object do
