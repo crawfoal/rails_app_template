@@ -1,7 +1,7 @@
 #!/bin/bash --login
 
-# Usage:
-#   gen_rails_app app_name path_to_parent_dir
+# Usage (from project root):
+#   bin/generate app_name path_to_parent_dir
 
 # Assumptions:
 #  - if parent directory isn't given, the project folder should be put in the
