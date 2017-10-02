@@ -1,6 +1,6 @@
 1. Publish on Github (I just do this through their Atom plugin)
 2. Set up [Semaphore](https://semaphoreci.com/)
-3. Setup [CodeClimate](https://codeclimate.com/)
+3. Set up [CodeClimate](https://codeclimate.com/)
 4. Integrate Semaphore and CodeClimate via Semphore's Integration tab on the settings page.
 5. Setup up staging and production apps on Heroku (see [instructions](https://devcenter.heroku.com/articles/multiple-environments))
 6. Link apps to Github so commits are referenced

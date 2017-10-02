@@ -10,7 +10,7 @@ gem 'font-awesome-rails'
 gem 'guard-rspec', require: false, group: :development
 gem 'haml-rails'
 gem 'jquery-ui-rails'
-gem 'launch', group: :test
+gem 'launchy', group: :test
 gem 'poltergeist', group: :test; ensure_phantomjs_installed
 gem 'pry'
 gem 'rails-controller-testing', group: :test
