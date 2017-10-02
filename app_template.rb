@@ -41,7 +41,6 @@ after_bundle do
     snippet('config/locales/devise/en/session_form.yml').chomp,
     after: 'sessions:'
 
-  rake 'haml:erb2haml'
   customize_app_layout
   directory 'app/views/shared'
 

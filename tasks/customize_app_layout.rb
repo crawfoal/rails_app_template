@@ -1,16 +1,17 @@
 inside 'app/views/layouts' do
-  insert_into_file 'application.html.haml',
-    snippet('views/app_layout/meta_tags.html.haml').chomp,
-    after: '%head'
+  insert_into_file 'application.html.erb',
+    snippet('views/app_layout/meta_tags.html.erb').chomp,
+    after: '<%= csrf_meta_tags %>'
 
-  gsub_file 'application.html.haml',
+  gsub_file 'application.html.erb',
     /^.*yield.*$/,
-    snippet('views/app_layout/tagged_main_element.html.haml').chomp
+    snippet('views/app_layout/tagged_main_element.html.erb').chomp
 
-  insert_into_file 'application.html.haml',
-    snippet('views/app_layout/nav_and_flash.html.haml').chomp,
-    after: '%body'
+  insert_into_file 'application.html.erb',
+    snippet('views/app_layout/nav_and_flash.html.erb').chomp,
+    after: '<body>'
 
-  append_to_file 'application.html.haml',
-    snippet('views/app_layout/screen_size_indicators.html.haml')
+  insert_into_file 'application.html.erb',
+    snippet('views/app_layout/screen_size_indicators.html.erb'),
+    before: '</html>'
 end

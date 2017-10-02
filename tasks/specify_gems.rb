@@ -8,7 +8,6 @@ gem 'factory_girl_rails', group: [:development, :test]
 gem 'faker', group: [:development, :test]
 gem 'font-awesome-rails'
 gem 'guard-rspec', require: false, group: :development
-gem 'haml-rails'
 gem 'jquery-ui-rails'
 gem 'launchy', group: :test
 gem 'poltergeist', group: :test; ensure_phantomjs_installed

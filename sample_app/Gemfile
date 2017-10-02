@@ -61,7 +61,6 @@ gem 'factory_girl_rails', group: %i[development test]
 gem 'faker', group: %i[development test]
 gem 'font-awesome-rails'
 gem 'guard-rspec', require: false, group: :development
-gem 'haml-rails'
 gem 'jquery-ui-rails'
 gem 'launchy', group: :test
 gem 'poltergeist', group: :test
