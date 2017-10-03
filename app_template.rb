@@ -18,6 +18,9 @@ def method_missing(method_name, *args, &block)
 end
 
 specify_gems
+insert_into_file 'Gemfile',
+  "\nruby '#{RUBY_VERSION}'",
+  after: "source 'https://rubygems.org'"
 
 after_bundle do
   run 'bundle exec spring binstub rspec'
