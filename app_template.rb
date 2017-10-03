@@ -58,6 +58,10 @@ after_bundle do
 
   add_custom_javascripts
 
+  directory 'lib'
+  directory 'db/sample'
+  customize_setup_script
+
   ensure_pg_server_is_running
   rails_command 'db:create'
   rails_command 'db:migrate'
