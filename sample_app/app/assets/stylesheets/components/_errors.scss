@@ -1,9 +1,26 @@
+// Devise form errors
 #error_explanation {
   color: palette(Red);
   margin-bottom: $small-spacing;
 
   h2 {
     font-size: modular-scale(0);
+    margin-bottom: $tiny-spacing;
+  }
+
+  ul {
+    list-style: disc inside;
+    margin-left: $small-spacing;
+  }
+}
+
+// Styles for this application's errors partial
+.error_explanation {
+  @include error-coloring;
+  margin-bottom: $small-spacing;
+  padding: $small-spacing;
+
+  h3 {
     margin-bottom: $tiny-spacing;
   }
 

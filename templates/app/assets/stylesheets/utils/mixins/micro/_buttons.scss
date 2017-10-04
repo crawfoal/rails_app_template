@@ -1,11 +1,9 @@
 @mixin button-color($color) {
-  background-color: $color;
-  color: text-color-for($color);
+  @include bg-color-with-computed-text-color($color);
 
   &:hover,
   &:focus {
-    background-color: shade($color, 20%);
-    color: text-color-for($color);
+    @include bg-color-with-computed-text-color(shade($color, 20%));
   }
 
   &:disabled {
@@ -18,8 +16,7 @@
 @mixin lighten-on-hover($color: $action-color) {
   &:hover,
   &:focus {
-    background-color: lighten($color, 5%);
-    color: text-color-for($color);
+    @include bg-color-with-computed-text-color(lighten($color, 5%));
   }
 
   &:disabled {
@@ -142,8 +139,7 @@ Expects the following:
       cursor: pointer;
 
       &:not(.hideHint) {
-        background-color: $action-color;
-        color: text-color-for($action-color);
+        @include bg-color-with-computed-text-color($action-color);
         opacity: .7;
         -webkit-font-smoothing: antialiased;
       }
@@ -151,9 +147,8 @@ Expects the following:
   }
 
   input:checked + label {
-    background-color: $action-color;
+    @include bg-color-with-computed-text-color($action-color);
     border: 1px solid shade($action-color, 15%);
-    color: text-color-for($action-color);
     opacity: 1.0;
     -webkit-font-smoothing: antialiased;
 
