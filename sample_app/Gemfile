@@ -58,8 +58,8 @@ gem 'capybara', group: %i[development test]
 gem 'database_cleaner', group: :test
 gem 'decent_exposure'
 gem 'devise'
-gem 'factory_girl_rails', group: %i[development test]
-gem 'faker', group: %i[development test]
+gem 'factory_girl_rails'
+gem 'faker'
 gem 'font-awesome-rails'
 gem 'guard-rspec', require: false, group: :development
 gem 'jquery-ui-rails'

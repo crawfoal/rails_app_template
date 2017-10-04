@@ -4,8 +4,8 @@ gem 'capybara', group: [:development, :test]
 gem 'database_cleaner', group: :test
 gem 'decent_exposure'
 gem 'devise'
-gem 'factory_girl_rails', group: [:development, :test]
-gem 'faker', group: [:development, :test]
+gem 'factory_girl_rails' # needed for generating sample data in all environments
+gem 'faker' # needed for generating sample data in all environments
 gem 'font-awesome-rails'
 gem 'guard-rspec', require: false, group: :development
 gem 'jquery-ui-rails'
