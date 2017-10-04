@@ -24,6 +24,8 @@ RSpec.describe 'Navigation' do
 
   scenario 'User clicks the browser back button and then tries to open the '\
            'navigation drawer', :js do
+    skip 'This test fails intermittenly. An issue is open for this in this '\
+         'as well as in the "Greensteps" repo.'
     create_and_login_user
 
     appbar.open_drawer

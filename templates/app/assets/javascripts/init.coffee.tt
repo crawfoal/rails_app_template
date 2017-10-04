@@ -1,7 +1,11 @@
 window.<%= @app_name.camelize %> ||= {}
 
 <%= @app_name.camelize %>.init = ->
-  @navDrawer = new <%= @app_name.camelize %>.NavDrawer('#nav_drawer', 'nav .fa-navicon', -> true)
+  @navDrawer = new <%= @app_name.camelize %>.NavDrawer(
+    '#nav_drawer',
+    'nav .fa-navicon',
+    -> true
+  )
   new <%= @app_name.camelize %>.Dismissable('.flash-message button')
 
 $(document).ready ->
@@ -11,4 +15,8 @@ $(document).on 'turbolinks:load', ->
   new <%= @app_name.camelize %>.Dismissable('.flash-message button')
 
   if <%= @app_name.camelize %>.navDrawer.isStale()
-    <%= @app_name.camelize %>.navDrawer = new <%= @app_name.camelize %>.NavDrawer('#nav_drawer', 'nav .fa-navicon', -> true)
+    <%= @app_name.camelize %>.navDrawer = new <%= @app_name.camelize %>.NavDrawer(
+      '#nav_drawer',
+      'nav .fa-navicon',
+      -> true
+    )

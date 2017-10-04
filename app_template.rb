@@ -62,6 +62,8 @@ after_bundle do
   directory 'db/sample'
   customize_setup_script
 
+  append_to_file 'Rakefile', snippet('customize_default_rake_task.rb')
+
   ensure_pg_server_is_running
   rails_command 'db:create'
   rails_command 'db:migrate'
@@ -79,6 +81,7 @@ after_bundle do
   copy_file 'CONTRIBUTING.md'
 
   git :init
+  append_to_file '.gitignore', 'mkmf.log'
   git add: '.'
   git commit: "-am 'Initial commit'"
 end

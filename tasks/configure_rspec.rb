@@ -1,6 +1,3 @@
-insert_into_file 'spec/spec_helper.rb',
-  snippet('spec/run_rubocop_after_suite.rb'),
-  after: 'RSpec.configure do |config|'
 prepend_to_file 'spec/spec_helper.rb', snippet('spec/webmock_config.rb')
 prepend_to_file 'spec/spec_helper.rb', snippet('spec/simplecov_config.rb')
 gsub_file 'spec/spec_helper.rb', '=begin', ''

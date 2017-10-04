@@ -1,7 +1,11 @@
 window.SampleApp ||= {}
 
 SampleApp.init = ->
-  @navDrawer = new SampleApp.NavDrawer('#nav_drawer', 'nav .fa-navicon', -> true)
+  @navDrawer = new SampleApp.NavDrawer(
+    '#nav_drawer',
+    'nav .fa-navicon',
+    -> true
+  )
   new SampleApp.Dismissable('.flash-message button')
 
 $(document).ready ->
@@ -11,4 +15,8 @@ $(document).on 'turbolinks:load', ->
   new SampleApp.Dismissable('.flash-message button')
 
   if SampleApp.navDrawer.isStale()
-    SampleApp.navDrawer = new SampleApp.NavDrawer('#nav_drawer', 'nav .fa-navicon', -> true)
+    SampleApp.navDrawer = new SampleApp.NavDrawer(
+      '#nav_drawer',
+      'nav .fa-navicon',
+      -> true
+    )
